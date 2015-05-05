@@ -1,0 +1,42 @@
+	// Instantiate the Choreo, using a previously instantiated TembooSession object, eg:
+	// TembooSession session = new TembooSession("narayana1208", "myFirstApp", "2fd978fdb07b4f3c92dd73d098a995ff");
+
+	GetAllContacts getAllContactsChoreo = new GetAllContacts(session);
+
+	// Get an InputSet object for the choreo
+	GetAllContactsInputSet getAllContactsInputs = getAllContactsChoreo.newInputSet();
+
+	// Set inputs
+	//"CE0FWSDOrc3ABxJbpRe0TXiv"
+	getAllContactsInputs.set_ClientSecret(Allcontacts.Secretkey);
+	//"1/WpuCpjJN2fKBk38eXtFsdmB7oc_CQiWwodSa3AIYiBIMEudVrK5jSpoR30zcRFq6"
+	getAllContactsInputs.set_RefreshToken(get.RefreshToken);
+	//"354986878601-aaglejlchinucghafapsjim1okh90lm8.apps.googleusercontent.com"
+	getAllContactsInputs.set_ClientID(Allcontacts.ClientId);
+
+	// Execute Choreo
+	GetAllContactsResultSet getAllContactsResults = getAllContactsChoreo.execute(getAllContactsInputs);
+	
+	
+	System.out.println("\n THE RESULT OF GOOGLE GET ALL CONTACTS \n");
+	
+	System.out.println("\n ACCESS TOKEN \n"+getAllContactsResults.get_AccessToken());
+	
+	System.out.println("The response of Get all Contacts");
+	
+	
+	// Instantiate the Choreo, using a previously instantiated TembooSession object, eg:
+	// TembooSession session = new TembooSession("narayana1208", "myFirstApp", "2fd978fdb07b4f3c92dd73d098a995ff");
+
+	FinalizeOAuth finalizeOAuthChoreo = new FinalizeOAuth(session);
+
+	// Get an InputSet object for the choreo
+	FinalizeOAuthInputSet finalizeOAuthInputs = finalizeOAuthChoreo.newInputSet();
+
+	// Set inputs
+	finalizeOAuthInputs.set_CallbackID("narayana1208/3a94a907-c776-4d43-b936-f404956191b2");
+	finalizeOAuthInputs.set_ClientSecret("CE0FWSDOrc3ABxJbpRe0TXiv");
+	finalizeOAuthInputs.set_ClientID("354986878601-aaglejlchinucghafapsjim1okh90lm8.apps.googleusercontent.com");
+
+	// Execute Choreo
+	FinalizeOAuthResultSet finalizeOAuthResults = finalizeOAuthChoreo.execute(finalizeOAuthInputs);
